@@ -158,10 +158,10 @@
 				</div>
 				<!-- container -->
 			</div>
-			<!-- /MAIN HEADER -->
+			<!-- /MAIN HEADER --> 
 		</header>
 		<!-- /HEADER -->
-
+ <form action="{{ route('logout')}}" class="d-none" id="logoutForm" method="post">@csrf</form>
 		<!-- NAVIGATION -->
 		<nav id="navigation">
 			<!-- container -->
@@ -176,7 +176,15 @@
 						<li><a href="#">Laptops</a></li>
 						<li><a href="#">Smartphones</a></li>
 						<li><a href="#">Cameras</a></li>
-						<li><a href="#">Accessories</a></li>
+						@guest
+								
+						<li><a href="{{ route('register') }}">Register</a></li>
+						<li><a href="{{ route('login') }}">Login</a></li>
+						@endguest
+
+						@auth
+						<li><a id="logoutlink" href="#">Logout</a></li>
+						@endauth
 					</ul>
 					<!-- /NAV -->
 				</div>
@@ -185,6 +193,13 @@
 			<!-- /container -->
 		</nav>
 		<!-- /NAVIGATION -->
+
+<div class="section">
+
+	@yield('content')
+
+</div>
+					
 
 		<!-- SECTION -->
 		<div class="section">
@@ -484,7 +499,7 @@
 					</div>
 					<!-- /section title -->
 
-          @yield('content')
+
 
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
@@ -626,5 +641,12 @@
 		<script src="{{asset('web')}}/js/jquery.zoom.min.js"></script>
 		<script src="{{asset('web')}}/js/main.js"></script>
 
+		<script>
+			$('#logoutlink').click(function (e) {
+				e.preventDefault;
+				$('#logoutForm').submit();
+			})
+
+		</script>
 	</body>
 </html>

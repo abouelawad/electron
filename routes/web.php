@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendController;
 use App\Http\Controllers\Web\HomeController;
@@ -26,3 +27,7 @@ Route::get('/' , [HomeController::class , 'index']);
 // Route::get('/theadmin' ,function(){return "admin";});
 Route::get('/dashboard' , [AdminController::class , 'index']);
 Route::get('dashboard/products' , [AdminProductController::class , 'index']);
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
