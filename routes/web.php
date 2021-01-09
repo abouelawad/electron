@@ -6,6 +6,8 @@ use App\Http\Controllers\SendController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController ;
+use App\Http\Controllers\AdminAuth\RegisterController as AdminRegisterController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +27,26 @@ use App\Http\Controllers\Admin\AdminProductController;
 Route::get('/' , [HomeController::class , 'index']);
 
 // Route::get('/theadmin' ,function(){return "admin";});
-Route::get('/dashboard' , [AdminController::class , 'index']);
-Route::get('dashboard/products' , [AdminProductController::class , 'index']);
 
+
+// user Auth (predefined)
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// admin Auth (user defined ) for multi auth 
+
+Route::prefix('/dashboard')->group(function () {
+  
+  Route::get('/' , [AdminController::class , 'index']);
+  Route::get('/products' , [AdminProductController::class , 'index']);
+
+  Route::get('login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+  Route::post('login', [AdminLoginController::class, 'login'])->name('admin.login.post');
+  
+  Route::post('logout', [AdminLoginController::class, 'login'])->name('admin.login.post');
+
+  Route::get('register', [AdminRegisterController::class, 'showRegistrationForm'])->name('admin.register');
+  Route::post('register', [AdminRegisterController ::class, 'register'])->name('admin.register.post'); 
+});
+
+
+

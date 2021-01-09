@@ -1,20 +1,20 @@
-@extends('layouts.web')
+@extends('layouts.auth')
+
 
 
 @section('content')
-<div class="container">
+<div class="content " >
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col col-lg-12">
+            <div class="card" >
                 <div class="card-header">{{ __('Login') }}</div>
                 <hr>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
-
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -58,10 +58,12 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                            </div>
+                           <div class="d-flex justify-content-center">
 
-                                @if (Route::has('password.request'))
+                               @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                      {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
                             </div>

@@ -19,8 +19,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
 
+    public const ADMIN_HOME = '/dashboard';
+
     /**
-     * The controller namespace for the application.
+     *
+     *  The controller namespace for the application.
      *
      * When present, controller route declarations will automatically be prefixed with this namespace.
      *
