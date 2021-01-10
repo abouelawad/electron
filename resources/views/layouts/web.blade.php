@@ -172,13 +172,15 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Hot Deals</a></li>
-						<li><a href="#">Categories</a></li>
+						<li><a href="#">{{ __('main.products') }}</a></li>
+						<li><a href="#">{{ __('main.categories') }}</a></li>
 						<li><a href="#">Laptops</a></li>
 						<li><a href="#">Smartphones</a></li>
 						<li><a href="#">Cameras</a></li>
+						<li><a href="{{ route('local.set' , 'en') }}">EN</a></li>
+						<li><a href="{{ route('local.set' , 'ar' ) }}">AR</a></li>
+						<li><a href="{{ route('local.set' , 'ru' ) }}">AR</a></li>
 						@guest
-								
 						<li><a href="{{ route('register') }}">Register</a></li>
 						<li><a href="{{ route('login') }}">Login</a></li>
 						@endguest

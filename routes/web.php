@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendController;
 use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\web\WebLocaleController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController ;
 use App\Http\Controllers\AdminAuth\RegisterController as AdminRegisterController ;
@@ -26,8 +27,9 @@ use App\Http\Controllers\AdminAuth\RegisterController as AdminRegisterController
 
 Route::get('/' , [HomeController::class , 'index']);
 
-// Route::get('/theadmin' ,function(){return "admin";});
-
+// LOCALIZATION
+// Route::get('/locale' , [WebLocaleController::class , 'test']);
+Route::get('/locale/set/{locale}' , [WebLocaleController::class , 'setLang'])->name('local.set');
 
 // user Auth (predefined)
 Auth::routes();
