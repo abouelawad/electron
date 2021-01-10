@@ -26,4 +26,6 @@ class WebLocaleController extends Controller
     {
         return 'test';
     }
+
+    
 }

@@ -16,25 +16,40 @@ class ProductCatSeeder extends Seeder
     {
         //
 
-    ProductCat::create([
-        'name'=>'laptops',
-        'is_active'=>'1'
-    ]);
-    ProductCat::create([
-        'name'=>'cameras',
-        'is_active'=>'1'
-    ]);
-    ProductCat::create([
-        'name'=>'mobiles',
-        'is_active'=>'1'
-    ]);
-    ProductCat::create([
-        'name'=>'screens',
-        'is_active'=>'1'
-    ]);
-    ProductCat::create([
-        'name'=>'appliances',
-        'is_active'=>'1'
-    ]);
+        ProductCat::create([
+            'name'=>json_encode([
+                'en' => "laptops",
+                'ar' => "لابتوب"
+            ]) ,
+            'is_active'=>'1'
+        ]);
+        ProductCat::create([
+            'name'=>json_encode([
+                'en'=>'cameras',
+                'ar'=>'كاميرات'
+            ]),
+            'is_active'=>'1'
+        ]);
+        ProductCat::create([
+            'name'=>json_encode([
+                'en'=>' mobiles',
+                'ar'=>'موبايلات'
+            ]),
+            'is_active'=>'1'
+        ]);
+        ProductCat::create([
+            'name'=>json_encode([
+                    'en' => 'screens',
+                    'ar' => 'شاشات'
+            ]),
+            'is_active'=>'1'
+        ]);
+        ProductCat::create([
+            'name'=>json_encode([
+                    'en' => 'appliances',
+                    'ar' => 'الأجهزة'
+            ]),
+            'is_active'=>'1'
+        ]);
     }
 }

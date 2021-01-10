@@ -15,7 +15,7 @@ class CreateProductCatsTable extends Migration
     {
         Schema::create('product_cats', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
+            $table->text('name');
             $table->boolean('is_active')->default("1");
             $table->timestamps();
         });
