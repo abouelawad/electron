@@ -17,10 +17,19 @@ class ProductsDataTable extends DataTable
     public function ajax()
     {
         return datatables()
-            // ->eloquent(Product::select('id','name','price','created_at','updated_at')) OR
-            ->eloquent(Product::select('*'))
+        ->eloquent(Product::select('id','name','price')) 
+        ->addColumn('action' , function($row) {
+            return "<a href= '".route('local.set' , $row->id)."' class ='btn btn-sm btn-success'>Show</a>
+                <a href= '#' class ='btn btn-sm btn-info' >Edit</a>
+                <a href= '#' class ='btn btn-sm btn-danger' >Delete</a>" ;
+            })
             ->make(true);
     }
+        #//! FOR DELETE BUTTON
+        // ->addColumn('action', function($row){
+        //            $idx = $row->id;
+        //             $btn = "<a href='javascript:void(0)' id='delete' data-id='$idx' class='edit btn btn-danger btn-sm'>$idx</a>";
+        
     public function html()
     {
         return $this->builder()
@@ -28,9 +37,10 @@ class ProductsDataTable extends DataTable
                 'id',
                 'name',
                 'price',
+                'action',
                 // 'product_cat_id',
-                'created_at',
-                'updated_at',
+                // 'created_at',
+                // 'updated_at',
             ])
             ->parameters([
                 'dom' => 'Bfrtip',
